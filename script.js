@@ -127,7 +127,13 @@ $(document).ready(function () {
 
       // get name, for and image
       const name = $($("div[itemprop='description'] p b")[0]).text().trim();
-      const frgFor = $("h1[itemprop='name'] small").text().trim().split(" ")[1];
+      let frgFor = "men";
+      const forEls = $("h1[itemprop='name'] small").text().trim().split(" ");
+      if (forEls.length > 2) {
+        frgFor = [forEls[1], forEls[3]].join(", ");
+      } else {
+        frgFor = forEls[1];
+      }
       const frgImage = $top.next().find("img[itemprop='image']").attr("src");
 
       // get avgRating and votes
@@ -266,6 +272,17 @@ $(document).ready(function () {
           notes.push({ name, type, image, url });
         });
       });
+
+      if (!notes.length) {
+        const $notes = $(`#pyramid .notes-box`).next().find(">div>div");
+        $notes.each((i, el) => {
+          const $el = $(el);
+          const name = $el.text().trim();
+          const image = $el.find("img").attr("src");
+          const url = $el.find("a").attr("href");
+          notes.push({ name, type: "Base Notes", image, url });
+        });
+      }
 
       //get longevities
       const longevities = [];
