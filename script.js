@@ -102,7 +102,7 @@
 //   ]
 // }
 
-const BASE_URL = "https://de69-14-248-94-10.ngrok-free.app";
+const BASE_URL = "https://f7be-14-248-94-10.ngrok-free.app";
 
 $(document).ready(function () {
   try {
