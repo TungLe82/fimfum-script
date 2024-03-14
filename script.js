@@ -130,7 +130,7 @@ $(document).ready(function () {
       let frgFor = "men";
       const forEls = $("h1[itemprop='name'] small").text().trim().split(" ");
       if (forEls.length > 2) {
-        frgFor = [forEls[1], forEls[3]].join(", ");
+        frgFor = "unisex";
       } else {
         frgFor = forEls[1];
       }
